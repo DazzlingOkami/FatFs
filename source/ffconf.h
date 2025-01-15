@@ -1,9 +1,16 @@
 /*---------------------------------------------------------------------------/
 /  Configurations of FatFs Module
 /---------------------------------------------------------------------------*/
+#define FF_STRINGIZE(x)  FF_STRINGIZE2(x)
+#define FF_STRINGIZE2(x) #x
 
 #define FFCONF_DEF	5380	/* Revision ID */
 
+/* User can override ffconf.h
+/  FF_CONFIG as a header file to include (-DFF_CONFIG=ff_config.h) */
+#ifdef FF_CONFIG
+#include FF_STRINGIZE(FF_CONFIG)
+#else
 /*---------------------------------------------------------------------------/
 / Function Configurations
 /---------------------------------------------------------------------------*/
@@ -294,3 +301,4 @@
 
 
 /*--- End of configuration options ---*/
+#endif
